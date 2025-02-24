@@ -48,12 +48,10 @@ def is_thumb_index_pinky_touching(hand_landmarks):
 def voice_command_listener():
         # Define the list of valid commands
     command_list = [
-        "open browser",
+        "exit",
         "switch tab",
-        "volume up",
-        "volume down",
-        "play music",
-        "pause music",
+        "copy",
+        "paste",
     ]
     
     # Create a recognizer instance
@@ -74,18 +72,14 @@ def voice_command_listener():
             if matched_command:
                 print(f"Executing command: {matched_command}")
                 # Execute the corresponding action
-                if matched_command == "open browser":
-                    pyautogui.hotkey("ctrl", "t")  # Example: Open a new browser tab
+                if matched_command == "exit":
+                    pyautogui.hotkey("q")  # Example: Open a new browser tab
                 elif matched_command == "switch tab":
                     pyautogui.hotkey("alt", "tab")
-                elif matched_command == "volume up":
-                    pyautogui.press("volumeup")
-                elif matched_command == "volume down":
-                    pyautogui.press("volumedown")
-                elif matched_command == "play music":
-                    pyautogui.press("playpause")  # Example: Play/pause media
-                elif matched_command == "pause music":
-                    pyautogui.press("playpause")  # Play/pause media
+                elif matched_command == "copy":
+                    pyautogui.press("ctrl+c")
+                elif matched_command == "paste":
+                    pyautogui.press("ctrl+v")
             else:
                 print("Command not recognized. Please try again.")
         
